@@ -40,18 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-      <EmbeddedResource Update="Properties\Resources.resx">
-          <Generator>ResXFileCodeGenerator</Generator>
-          <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <Compile Update="Properties\Resources.Designer.cs">
-          <DesignTime>True</DesignTime>
-          <AutoGen>True</AutoGen>
-          <DependentUpon>Resources.resx</DependentUpon>
-      </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
       <None Include="plugin.json">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
@@ -59,5 +47,4 @@
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
   </ItemGroup>
-
 </Project>
