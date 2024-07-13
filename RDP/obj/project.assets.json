@@ -8,19 +8,19 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "/home/amason/.nuget/packages/": {}
+    "C:\\Users\\antho\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/amason/c-sharp/PowerToysRun-RDP/RDP/RDP.csproj",
+      "projectUniqueName": "C:\\Users\\antho\\PowerToysRun-RDP\\RDP\\RDP.csproj",
       "projectName": "Community.PowerToys.Run.Plugin.RDP",
-      "projectPath": "/home/amason/c-sharp/PowerToysRun-RDP/RDP/RDP.csproj",
-      "packagesPath": "/home/amason/.nuget/packages/",
-      "outputPath": "/home/amason/c-sharp/PowerToysRun-RDP/RDP/obj/",
+      "projectPath": "C:\\Users\\antho\\PowerToysRun-RDP\\RDP\\RDP.csproj",
+      "packagesPath": "C:\\Users\\antho\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\antho\\PowerToysRun-RDP\\RDP\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/amason/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\antho\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0-windows"
@@ -38,6 +38,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -57,9 +62,12 @@
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

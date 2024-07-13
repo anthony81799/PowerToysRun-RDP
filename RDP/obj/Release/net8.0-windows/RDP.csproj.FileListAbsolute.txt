@@ -1,0 +1,6 @@
+C:\Users\antho\PowerToysRun-RDP\RDP\obj\Release\net8.0-windows\RDP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\antho\PowerToysRun-RDP\RDP\obj\Release\net8.0-windows\RDP.AssemblyInfoInputs.cache
+C:\Users\antho\PowerToysRun-RDP\RDP\obj\Release\net8.0-windows\RDP.AssemblyInfo.cs
+C:\Users\antho\PowerToysRun-RDP\RDP\obj\Release\net8.0-windows\RDP.csproj.CoreCompileInputs.cache
+C:\Users\antho\PowerToysRun-RDP\RDP\obj\Release\net8.0-windows\RDP.sourcelink.json
+C:\Users\antho\PowerToysRun-RDP\RDP\obj\Release\net8.0-windows\RDP.csproj.AssemblyReference.cache
