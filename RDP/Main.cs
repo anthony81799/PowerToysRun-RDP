@@ -16,10 +16,10 @@ public class Main : IPlugin, IReloadable, IDisposable
   public string Name => "RDP";
 	public string Description => "Launches RDP connections";
   private bool _disposed;
-  private PluginInitContext? _context;
-  private RDPConnections? _rdpConnections;
-  private RDPConnectionsStore? _store;
-  private SearchPhraseProvider? _searchPhraseProvider;
+  private PluginInitContext _context;
+  private RDPConnections _rdpConnections;
+  private RDPConnectionsStore _store;
+  private SearchPhraseProvider _searchPhraseProvider;
 
   /// <summary>
   /// initialize the plugin.
@@ -117,7 +117,7 @@ public class Main : IPlugin, IReloadable, IDisposable
   /// </summary>
   private class SearchPhraseProvider
   {
-    public string? Search { get; set; }
+    public string Search { get; set; }
   }
 
   public void ReloadData()
