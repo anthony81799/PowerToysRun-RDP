@@ -16,7 +16,7 @@ public class Main : IPlugin, IReloadable, IDisposable
   public string Name => "RDP";
 	public string Description => "Launches RDP connections";
   private bool _disposed;
-  private PluginInitContext _context;
+  private PluginInitContext? _context;
   private RDPConnections _rdpConnections;
   private RDPConnectionsStore _store;
   private SearchPhraseProvider _searchPhraseProvider;
@@ -52,8 +52,6 @@ public class Main : IPlugin, IReloadable, IDisposable
         .Concat(connections.Select(MapToResult))
         .ToList();
 
-    LogInfo(results);
-
     return results;
   }
 
@@ -85,15 +83,6 @@ public class Main : IPlugin, IReloadable, IDisposable
             return true;
           }
       };
-
-  private void LogInfo(IReadOnlyCollection<Result> results)
-  {
-    _context.API.LogInfo("RDP", "Results: ");
-    foreach (var result in results)
-    {
-      _context.API.LogInfo("RDP", $"{result.Title} - {result.Score}");
-    }
-  }
 
   private Result CreateDefaultResult() =>
       new()
