@@ -1,9 +1,9 @@
-using Community.PowerToys.Run.Plugin.ProcessKiller.Properties;
+using Community.PowerToys.Run.Plugin.RDP.Properties;
 using System.Windows.Controls;
 using Wox.Infrastructure;
 using Wox.Plugin;
 
-namespace Community.PowerToys.Run.Plugin.ProcessKiller;
+namespace Community.PowerToys.Run.Plugin.RDP;
 
 public class Main : IPlugin, IPluginI18n, IReloadable, IDisposable
 {

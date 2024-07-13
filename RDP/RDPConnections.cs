@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Community.PowerToys.Run.Plugin.ProcessKiller;
+namespace Community.PowerToys.Run.Plugin.RDP;
 
 internal class RDPConnections
 {

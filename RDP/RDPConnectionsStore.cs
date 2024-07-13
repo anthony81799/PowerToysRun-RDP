@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Community.PowerToys.Run.Plugin.ProcessKiller;
+namespace Community.PowerToys.Run.Plugin.RDP;
 
 internal class RDPConnectionsStore
 {
