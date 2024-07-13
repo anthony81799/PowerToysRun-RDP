@@ -1,0 +1,66 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0-windows7.0": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "net8.0-windows7.0": []
+  },
+  "packageFolders": {
+    "/home/amason/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/amason/c-sharp/PowerToysRun-RDP/RDP/RDP.csproj",
+      "projectName": "Community.PowerToys.Run.Plugin.RDP",
+      "projectPath": "/home/amason/c-sharp/PowerToysRun-RDP/RDP/RDP.csproj",
+      "packagesPath": "/home/amason/.nuget/packages/",
+      "outputPath": "/home/amason/c-sharp/PowerToysRun-RDP/RDP/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/amason/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0-windows"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0-windows7.0": {
+        "targetAlias": "net8.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
