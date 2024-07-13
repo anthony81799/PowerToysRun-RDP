@@ -1,5 +1,10 @@
-using Community.PowerToys.Run.Plugin.RDP.Properties;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Windows.Controls;
+using Microsoft.Win32;
 using Wox.Infrastructure;
 using Wox.Plugin;
 
@@ -8,6 +13,8 @@ namespace Community.PowerToys.Run.Plugin.RDP;
 public class Main : IPlugin, IReloadable, IDisposable
 {
   public static string PluginID => "DF7413853DC54C2287390EE0E0C5BF42";
+  public string Name => Resources.plugin_name;
+	public string Description => Resources.plugin_description;
   private bool _disposed;
   private PluginInitContext _context;
   private RDPConnections _rdpConnections;
