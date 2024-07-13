@@ -52,7 +52,7 @@ public class Main : IPlugin, IReloadable, IDisposable
         .Concat(connections.Select(MapToResult))
         .ToList();
 
-    LogResults(results);
+    LogInfo(results);
 
     return results;
   }
@@ -86,7 +86,7 @@ public class Main : IPlugin, IReloadable, IDisposable
           }
       };
 
-  private void LogResults(IReadOnlyCollection<Result> results)
+  private void LogInfo(IReadOnlyCollection<Result> results)
   {
     _context.API.LogInfo("RDP", "Results: ");
     foreach (var result in results)
