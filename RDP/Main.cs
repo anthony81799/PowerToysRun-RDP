@@ -5,7 +5,7 @@ using Wox.Plugin;
 
 namespace Community.PowerToys.Run.Plugin.RDP;
 
-public class Main : IPlugin, IPluginI18n, IReloadable, IDisposable
+public class Main : IPlugin, IReloadable, IDisposable
 {
   public static string PluginID => "DF7413853DC54C2287390EE0E0C5BF42";
   private bool _disposed;
