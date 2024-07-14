@@ -5,19 +5,31 @@ using System.IO;
 using System.Linq;
 using System.Windows.Controls;
 using Microsoft.Win32;
+using Microsoft.PowerToys.Settings.UI.Library;
 using Wox.Infrastructure;
 using Wox.Plugin;
 
 namespace Community.PowerToys.Run.Plugin.RDP;
 
-public class Main : IPlugin, IReloadable, IDisposable
+public class Main : IPlugin, ISettingProvider, IReloadable, IDisposable
 {
   public static string PluginID => "DF7413853DC54C2287390EE0E0C5BF42";
   public string Name => "RDP";
-	public string Description => "Launches RDP connections";
+  public string Description => "Launches RDP connections";
+  public IEnumerable<PluginAdditionalOption> AdditionalOptions =>
+  [
+    new()
+    {
+      PluginOptionType = PluginAdditionalOption.AdditionalOptionType.MultilineTextbox,
+      DisplayLabel = "Preddefined Connections",
+      DisplayDescription = "A list of connections to include in the query results by default.",
+      Key = "predefinedConnections"
+    }
+  ];
   private bool _disposed;
   private PluginInitContext _context;
   private RDPConnections _rdpConnections;
+  private RDPConnections _predefinedConnections;
   private RDPConnectionsStore _store;
   private SearchPhraseProvider _searchPhraseProvider;
 
@@ -49,6 +61,7 @@ public class Main : IPlugin, IReloadable, IDisposable
     var connections = _rdpConnections.FindConnections(query.Search);
 
     var results = new[] { CreateDefaultResult() }
+        .Concat(_predefinedConnections.FindConnections(query.Search).Select(MapToResult))
         .Concat(connections.Select(MapToResult))
         .ToList();
 
@@ -57,7 +70,7 @@ public class Main : IPlugin, IReloadable, IDisposable
 
   private static IReadOnlyCollection<string> GetRdpConnectionsFromRegistry()
   {
-    var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Terminal Server Client\Servers");
+    var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Terminal Server Client\Default");
     if (key is null)
     {
       return Array.Empty<string>();
@@ -121,24 +134,34 @@ public class Main : IPlugin, IReloadable, IDisposable
   }
 
   public void ReloadData()
-	{
-		if (_context is null)
-		{
-			return;
-		}
-	}
+  {
+    if (_context is null)
+    {
+      return;
+    }
+  }
 
-	public void Dispose()
-	{
-		Dispose(true);
-		GC.SuppressFinalize(this);
-	}
+  public void Dispose()
+  {
+    Dispose(true);
+    GC.SuppressFinalize(this);
+  }
 
-	protected virtual void Dispose(bool disposing)
-	{
-		if (!_disposed && disposing)
-		{
-			_disposed = true;
-		}
-	}
+  protected virtual void Dispose(bool disposing)
+  {
+    if (!_disposed && disposing)
+    {
+      _disposed = true;
+    }
+  }
+
+  public Control CreateSettingPanel()
+  {
+    throw new NotImplementedException();
+  }
+
+  public void UpdateSettings(PowerLauncherPluginSettings settings)
+  {
+    _predefinedConnections = RDPConnections.Create(settings?.AdditionalOptions?.FirstOrDefault(x => x.Key == "predefinedConnections")?.TextValueAsMultilineList);
+  }
 }
