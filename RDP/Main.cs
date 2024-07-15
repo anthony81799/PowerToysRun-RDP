@@ -21,7 +21,7 @@ public class Main : IPlugin, ISettingProvider, IReloadable, IDisposable
     new()
     {
       PluginOptionType = PluginAdditionalOption.AdditionalOptionType.MultilineTextbox,
-      DisplayLabel = "Preddefined Connections",
+      DisplayLabel = "Predefined connections",
       DisplayDescription = "A list of connections to include in the query results by default.",
       Key = "predefinedConnections"
     }
