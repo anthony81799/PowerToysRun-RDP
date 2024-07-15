@@ -76,7 +76,7 @@ public class Main : IPlugin, ISettingProvider, IReloadable, IDisposable
       return Array.Empty<string>();
     }
 
-    return key.GetSubKeyNames();
+    return key.GetValueNames().Select(x => key.GetValue(x.Trim()).ToString()).ToArray();
   }
 
   private Result MapToResult((string connection, int score) item) =>
