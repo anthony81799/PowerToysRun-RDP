@@ -59,12 +59,17 @@ public class Main : IPlugin, ISettingProvider, IReloadable, IDisposable
     _rdpConnections.Reload(GetRdpConnectionsFromRegistry());
 
     var connections = _rdpConnections.FindConnections(query.Search);
-
-    var results = new[] { CreateDefaultResult() }
-        .Concat(_predefinedConnections.FindConnections(query.Search).Select(MapToResult))
-        .Concat(connections.Select(MapToResult))
+    var predefinedConnections = _predefinedConnections.FindConnections(query.Search);
+    var results = Array.Empty<Result>()
+        .Union(predefinedConnections.Select(MapToResult))
+        .Union(connections.Select(MapToResult))
         .ToList();
 
+    if (results.Count == 0) {
+      results.Add(CreateDefaultResult());
+    } else if (query.Search.Length == 0) {
+      results.Insert(0, CreateDefaultResult());
+    }
     return results;
   }
 
