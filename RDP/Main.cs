@@ -3,7 +3,6 @@ using System.IO;
 using System.Windows.Controls;
 using Microsoft.Win32;
 using Microsoft.PowerToys.Settings.UI.Library;
-using Wox.Infrastructure;
 using Wox.Plugin;
 using ManagedCommon;
 
