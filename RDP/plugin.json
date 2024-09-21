@@ -9,6 +9,6 @@
   "Language": "csharp",
   "Website": "https://github.com/anthony81799/PowerToysRun-RDP",
   "ExecuteFileName": "Community.PowerToys.Run.Plugin.RDP.dll",
-  "IcoPathDark": "Images\\screen-mirroring.png",
-  "IcoPathLight": "Images\\screen-mirroring.png"
+  "IcoPathDark": "Images\\screen-mirroring.dark.png",
+  "IcoPathLight": "Images\\screen-mirroring.light.png"
 }
