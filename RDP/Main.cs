@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Windows.Controls;
 using Microsoft.Win32;
 using Microsoft.PowerToys.Settings.UI.Library;
-using Wox.Infrastructure;
 using Wox.Plugin;
+using ManagedCommon;
 
 namespace Community.PowerToys.Run.Plugin.RDP;
 
@@ -27,6 +24,7 @@ public class Main : IPlugin, ISettingProvider, IReloadable, IDisposable
     }
   ];
   private bool _disposed;
+  private string _icon;
   private PluginInitContext _context;
   private RDPConnections _rdpConnections;
   private RDPConnections _predefinedConnections;
@@ -46,6 +44,18 @@ public class Main : IPlugin, ISettingProvider, IReloadable, IDisposable
         "connections.txt"));
     _rdpConnections = _store.Load();
     _searchPhraseProvider = new SearchPhraseProvider();
+    _context.API.ThemeChanged += OnThemeChanged;
+    UpdateIconPath(_context.API.GetCurrentTheme());
+  }
+
+  private void OnThemeChanged(Theme oldTheme, Theme newTheme)
+  {
+    UpdateIconPath(newTheme);
+  }
+
+  private void UpdateIconPath(Theme theme)
+  {
+    _icon = theme is Theme.Light or Theme.HighContrastWhite ? "Images\\screen-mirroring.light.png" : "Images\\screen-mirroring.dark.png";
   }
 
   /// <summary>
@@ -65,9 +75,12 @@ public class Main : IPlugin, ISettingProvider, IReloadable, IDisposable
         .Union(connections.Select(MapToResult))
         .ToList();
 
-    if (results.Count == 0) {
+    if (results.Count == 0)
+    {
       results.Add(CreateDefaultResult());
-    } else if (query.Search.Length == 0) {
+    }
+    else if (query.Search.Length == 0)
+    {
       results.Insert(0, CreateDefaultResult());
     }
     return results;
@@ -78,7 +91,7 @@ public class Main : IPlugin, ISettingProvider, IReloadable, IDisposable
     var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Terminal Server Client\Default");
     if (key is null)
     {
-      return Array.Empty<string>();
+      return [];
     }
 
     return key.GetValueNames().Select(x => key.GetValue(x.Trim()).ToString()).ToArray();
@@ -90,7 +103,7 @@ public class Main : IPlugin, ISettingProvider, IReloadable, IDisposable
         // For some reason SubTitle must be unique otherwise score is not respected
         Title = $"{item.connection}",
         SubTitle = $"Connect to {item.connection} via RDP",
-        IcoPath = "Images\\screen-mirroring.png",
+        IcoPath = _icon,
         Score = item.score,
         Action = c =>
           {
@@ -107,7 +120,7 @@ public class Main : IPlugin, ISettingProvider, IReloadable, IDisposable
       {
         Title = "RDP",
         SubTitle = "Establish a new RDP connection",
-        IcoPath = "Images\\screen-mirroring.png",
+        IcoPath = _icon,
         Score = 100,
         Action = c =>
           {
